@@ -2,7 +2,7 @@
   <div class="snake-view game-box" @keyup="up">
     <canvas id="snake" ref="snake" :width="box_size" :height="box_size" style="border: 2px solid"></canvas>
     <button type="submit" v-show="is_start" @click="startGame" class="start-game"
-      :style="`top: ${box_size / 2 - 20}px; left: ${box_size / 2 - 50}px`">Start Game!</button>
+      :style="`top: ${box_size / 2 - 15}px; left: ${box_size / 2 - 40}px`">Start Game!</button>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 export default {
   data() {
     return {
+      proportion: document.body.offsetWidth / 1024,
       game_width: 40,
       /** @type {HTMLCanvasElement} */
       game: null,
@@ -27,6 +28,12 @@ export default {
       is_start: true,
       is_run: true, //方向是否已在畫布上改變
     };
+  },
+  created() {
+    const proportion = document.body.offsetWidth / 1024;
+    // this.size = Math.ceil(this.size * proportion);
+    // this.bor_s = Math.ceil(this.bor_s * proportion);
+    this.game_width = Math.ceil(this.game_width * proportion);
   },
   mounted() {
     this.init();
@@ -58,7 +65,7 @@ export default {
       this.level = 0;
       this.ctx.fillStyle = "rgba(0, 0, 0,0.4)";
       this.ctx.fillRect(0, 0, this.box_size, this.box_size);
-      this.ctx.font = `${this.game_width * 0.8}px Arial`;
+      this.ctx.font = `${this.game_width * 0.8 * this.proportion}px Arial`;
       this.ctx.fillStyle = "rgba(0, 0, 0)";
       this.ctx.textAlign = "center"
       this.ctx.width = `${this.box_size}`
@@ -70,7 +77,7 @@ export default {
       this.ctx.fillRect(0, 0, this.box_size, this.box_size);
       for (let i = 0; i < this.game_width; i++) {
         for (let j = 0; j < this.game_width; j++) {
-          this.drawBox([i, j], "rgba(0, 0,0,0.1)")
+          this.drawBox([i, j], "rgba(0, 0,0,0.3)")
         }
       }
       if (this.is_start) return;
@@ -154,7 +161,7 @@ export default {
   },
   computed: {
     box_size() {
-      return (this.size + this.bor_s) * this.game_width - this.bor_s;
+      return ((this.size + this.bor_s) * this.game_width - this.bor_s);
     },
     speed() {
       return this.level * 1.5;
@@ -168,6 +175,8 @@ export default {
   position: relative
 .start-game
   position: absolute
-  width: 100px
-  height: 40px
+  // width: 100px
+  // height: 40px
+  min-width: 80px
+  min-height: 30px
 </style>

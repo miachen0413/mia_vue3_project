@@ -18,6 +18,30 @@ export default {
         describe: "CCCC",
         price: 300
       },
+      {
+        id: 2,
+        name: "B",
+        describe: "BBBB",
+        price: 100
+      },
+      {
+        id: 3,
+        name: "C",
+        describe: "CCCC",
+        price: 300
+      },
+      {
+        id: 2,
+        name: "B",
+        describe: "BBBB",
+        price: 100
+      },
+      {
+        id: 3,
+        name: "C",
+        describe: "CCCC",
+        price: 300
+      },
     ]
   }),
   mutations: {
