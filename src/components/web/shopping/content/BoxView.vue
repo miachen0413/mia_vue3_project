@@ -2,7 +2,7 @@
   <div class="box-view">
     <div class="inner-box">
       <div class="pic">
-        <img :src="`/src/assets/pic/${production.name}.jpg`" alt="">
+        <img :src="`/public/imqges/${production.name}.jpg`" alt="">
       </div>
       <p>{{ production.name }}</p>
       <p>{{ production.price }} 元</p>
@@ -12,13 +12,11 @@
 </template>
 
 <script>
-
-
 export default {
+  name: 'BoxView',
   props: ['production'],
   data() {
     return {
-
     }
   },
 }
