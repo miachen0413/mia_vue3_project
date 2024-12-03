@@ -2,7 +2,7 @@
   <div class="box-view">
     <div class="inner-box">
       <div class="pic">
-        <img :src="`/public/imqges/${production.name}.jpg`" alt="">
+        <img :src="`/imqges/${production.name}.jpg`" alt="">
       </div>
       <p>{{ production.name }}</p>
       <p>{{ production.price }} 元</p>
