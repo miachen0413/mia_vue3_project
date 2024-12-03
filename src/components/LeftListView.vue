@@ -42,4 +42,5 @@ export default {
 #left-list
   padding: 5px
   height: 100%
+  background-color: #e8f2e8
 </style>

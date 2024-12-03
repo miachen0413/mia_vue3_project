@@ -1,8 +1,8 @@
 <template>
   <header-box></header-box>
   <div class="content">
-    <left-list class="left"></left-list>
-    <RouterView class="right"></RouterView>
+    <left-list></left-list>
+    <RouterView></RouterView>
   </div>
 </template>
 
@@ -21,13 +21,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.content
-  display: flex
-  padding-top: 60px
-  height: 100vh
-.left
-  background-color: #e8f2e8
-.right
-  flex-grow: 1
-  
 </style>

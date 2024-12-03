@@ -1,5 +1,5 @@
 <template>
-  <div class="shopping">
+  <div id="shopping">
     <content-view></content-view>
   </div>
 </template>
@@ -17,5 +17,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-
+#shopping
+  padding: 15px
 </style>

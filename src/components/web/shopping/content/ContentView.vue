@@ -26,10 +26,4 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.box-group
-  display: grid
-  grid-template-columns: repeat(4, 1fr)
-  grid-auto-rows: 210px
-  gap: 1rem
-  // flex-wrap: wrap
 </style>
