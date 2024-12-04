@@ -1,40 +1,42 @@
 <template>
-  <div id="left-list">
-    <ul>
-      <li>
-        <RouterLink to="/">首頁</RouterLink>
-      </li>
-      <li>遊戲
-        <ul>
-          <li>
-            <RouterLink to="/snake">貪食蛇</RouterLink>
-          </li>
-          <li>
-            <RouterLink to="/ladder">梯子遊戲</RouterLink>
-          </li>
-          <li>
-            <RouterLink to="/ladder">翻牌遊戲</RouterLink>
-          </li>
-        </ul>
-      </li>
-      <li>網頁
-        <ul>
-          <li>
-            <RouterLink to="/shopping">購物車</RouterLink>
-          </li>
-        </ul>
-      </li>
-    </ul>
+  <div id="left-list" :class="{ 'show': is_left_show }">
+    <list-box v-model="lists" :idx="null"></list-box>
   </div>
 </template>
 
 <script>
+import ListBox from './common/listBox.vue';
 export default {
+  components: { ListBox },
+  props: ["is_left_show"],
   data() {
     return {
-
+      lists: [
+        {
+          title: '首頁', path: '/', children: [], show: false
+        },
+        {
+          title: '遊戲', path: '',
+          children: [
+            { title: '貪食蛇', path: '/snake', children: [], show: false },
+            { title: '梯子遊戲', path: '/ladder', children: [], show: false },
+            { title: '翻牌遊戲', path: '/ladder', children: [], show: false },
+          ],
+          show: false
+        },
+        {
+          title: '網頁',
+          path: '',
+          children: [
+            {
+              title: '購物車', path: '/shopping', children: [], show: false
+            },
+          ],
+          show: false
+        },
+      ]
     };
-  },
+  }
 };
 </script>
 
@@ -43,4 +45,5 @@ export default {
   padding: 5px
   height: 100%
   background-color: #e8f2e8
+  transition: .5s
 </style>

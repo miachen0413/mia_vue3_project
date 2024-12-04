@@ -1,6 +1,6 @@
 @import './base.css'
 
-#app 
+#app
   margin: 0 auto
   font-weight: normal
   width: 100vw
@@ -17,22 +17,26 @@
   width: 600px
   height: 500px
   margin: 10px
+.phone-btn
+  display: none
+  background: none
+  border: none
 a,
-.green 
+.green
   text-decoration: none
   color: hsla(160, 100%, 37%, 1)
   transition: 0.4s
   padding: 3px
-@media (hover: hover) 
-  a:hover 
+@media (hover: hover)
+  a:hover
     background-color: hsla(160, 100%, 37%, 0.2)
 
 @media (min-width: 834px)
-  body 
+  body
     display: flex
     place-items: center
 
-  #app 
+  #app
     font-size: 1.1rem
     .content
       display: grid
@@ -42,12 +46,12 @@ a,
       grid-template-columns: repeat(4, 1fr)
       grid-auto-rows: 210px
 
-@media (min-width: 1024px) 
-  body 
+@media (min-width: 1024px)
+  body
     display: flex
     place-items: center
 
-  #app 
+  #app
     font-size: 1.2rem
     .content
       display: grid
@@ -58,10 +62,10 @@ a,
       grid-auto-rows: 300px
 
 @media (max-width: 833px)
-  body 
+  body
     display: flex
 
-  #app 
+  #app
     font-size: 1rem
   .content
     position: relative
@@ -69,10 +73,11 @@ a,
     position: absolute
     width: 80vw
     left: -80vw
+    &.show
+      left: 0
   #shopping
     .box-group
       grid-template-columns: repeat(2, 1fr)
       grid-auto-rows: 240px
-  
-
-
+  .phone-btn
+    display: inline-block

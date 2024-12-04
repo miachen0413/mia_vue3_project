@@ -1,7 +1,7 @@
 <template>
-  <header-box></header-box>
+  <header-box v-model:isLeftShow="is_left_show"></header-box>
   <div class="content">
-    <left-list></left-list>
+    <left-list :is_left_show="is_left_show"></left-list>
     <RouterView></RouterView>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   components: { HeaderBox, LeftList },
   data() {
     return {
-
+      is_left_show: false
     }
   },
 }
