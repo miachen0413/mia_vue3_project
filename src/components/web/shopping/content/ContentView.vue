@@ -26,7 +26,7 @@ export default {
       try {
         const response = await getProductions();
         console.log(response)
-        this.productions = response.productions;
+        this.productions = response;
       } catch (err) {
         // error.value = 'Failed to fetch data';
         console.error(err);

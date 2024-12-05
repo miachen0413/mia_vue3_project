@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 創建 Axios 實例
 const apiClient = axios.create({
-  // baseURL: import.meta.env.VITE_API_BASE_URL, // API 基本路徑
+  // baseURL: '/api, // API 基本路徑
   headers: {
     'Content-Type': 'application/json',
   },

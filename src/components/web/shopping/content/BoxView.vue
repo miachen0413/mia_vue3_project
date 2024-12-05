@@ -1,6 +1,5 @@
 <template>
   <div class="box-view">
-    BoxView
     <div class="inner-box">
       <div class="pic">
         <img :src="`/imqges/${production.name}.jpg`" alt="">
@@ -37,6 +36,7 @@ export default {
     align-items: center
     justify-content: center
     img
-      width: 100%
+      max-width: 100%
+      max-height: 75%
       
 </style>
