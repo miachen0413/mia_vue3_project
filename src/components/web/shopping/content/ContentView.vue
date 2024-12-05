@@ -12,7 +12,7 @@ import Box from './BoxView.vue'
 import { getProductions } from '@/servies/get'
 export default {
   components: { Box },
-  mounted() {
+  created() {
     this.fetchData()
   },
   data() {
