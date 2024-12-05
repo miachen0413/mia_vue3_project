@@ -1,12 +1,12 @@
 <template>
   <div class="box-view">
+    BoxView
     <div class="inner-box">
       <div class="pic">
         <img :src="`/imqges/${production.name}.jpg`" alt="">
       </div>
       <p>{{ production.name }}</p>
       <p>{{ production.price }} 元</p>
-
     </div>
   </div>
 </template>
