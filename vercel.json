@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/:path*", "destination": "/" }
+    { "source": "/api/:path*", "destination": "https://my-vercel-api-beta.vercel.app/api/api/:path*" },
+    { "source": "/:path*", "destination": "https://my-vercel-api-beta.vercel.app/api/" }
   ]
 }
