@@ -9,16 +9,30 @@
 
 <script>
 import Box from './BoxView.vue'
+import { getProductions } from '@/servies/get'
 export default {
   components: { Box },
+  mounted() {
+    this.fetchData()
+  },
   data() {
     return {
-
+      productions: {}
     }
   },
-  computed: {
-    productions() {
-      return this.$store.state.productions.production
+  methods: {
+    async fetchData() {
+      console.log('fetchDAta')
+      try {
+        const response = await getProductions();
+        console.log(response)
+        this.productions = response.productions;
+      } catch (err) {
+        // error.value = 'Failed to fetch data';
+        console.error(err);
+      } finally {
+        // loading.value = false;
+      }
     }
   }
 }
