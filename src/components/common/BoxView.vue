@@ -1,11 +1,11 @@
 <template>
   <div class="box-view" @click="goto">
-    <div class="inner-box">
+    <div class="inner-box" ref="BoxView">
       <div class="pic">
         <img :src="getImagePath(product.img_name)" alt="">
       </div>
-      <p>{{ product.name }}</p>
-      <p>{{ product.price }} 元</p>
+      <div class="name" :style="{ width: box_view_width }">{{ product.name }}</div>
+      <div class="price"><span>{{ product.price }} 元</span></div>
     </div>
   </div>
 </template>
@@ -15,8 +15,12 @@ import { getImagePath } from '@/utils/image';
 export default {
   name: 'BoxView',
   props: ['product'],
+  mounted() {
+    this.getBoxViewWidth()
+  },
   data() {
     return {
+      box_view_width: '0px'
     }
   },
   methods: {
@@ -24,9 +28,11 @@ export default {
       return getImagePath(img_name, 'images')
     },
     goto() {
-      console.log("goto")
-      console.log(this.$route)
       this.$router.push(`/shopping/product/${this.product.id}`)
+    },
+    getBoxViewWidth() {
+      console.log(this.$refs['BoxView'].clientWidth, this.$refs['BoxView'].offsetWidth)
+      this.box_view_width = parseInt(this.$refs['BoxView'].clientWidth - 20) + 'px'
     }
   }
 }
@@ -35,6 +41,7 @@ export default {
 
 <style lang="sass" scoped>
 .box-view
+  width: 100%
   .inner-box
     height: 100%
     width: 100%
@@ -49,5 +56,14 @@ export default {
     img
       max-width: 100%
       max-height: 75%
+  .name
+    text-overflow: ellipsis
+    overflow: hidden
+    white-space: nowrap
+  .price
+    font-size: 1.6rem
+    span
+      float: right
+      color: red
       
 </style>

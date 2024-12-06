@@ -39,8 +39,11 @@ a,
   #app
     font-size: 1.1rem
     .content
-      display: grid
-      grid-template-columns: 1fr 4fr
+      display: flex
+      #left-list
+        width: 25vw
+    #right-list
+      width: 75vw
   #shopping
     .box-group
       grid-template-columns: repeat(4, 1fr)
@@ -54,13 +57,17 @@ a,
   #app
     font-size: 1.2rem
     .content
-      display: grid
-      grid-template-columns: 1fr 5fr
+      // display: grid
+      // grid-template-columns: 1fr 5fr
+      display: flex
+    #left-list
+      width: 16vw
+    #right-list
+      width: 84vw
   #shopping
     .box-group
       grid-template-columns: repeat(5, 1fr)
       grid-auto-rows: 300px
-
 
 @media (max-width: 833px)
   body

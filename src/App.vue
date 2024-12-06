@@ -2,7 +2,9 @@
   <header-box v-model:isLeftShow="is_left_show"></header-box>
   <div class="content">
     <left-list :is_left_show="is_left_show"></left-list>
-    <RouterView></RouterView>
+    <div id="right-list">
+      <RouterView></RouterView>
+    </div>
   </div>
 </template>
 
