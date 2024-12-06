@@ -1,5 +1,7 @@
 <template>
   <div id="shopping-content">
+    advertise
+    <advertise-view></advertise-view>
     Shopping content
     <div class="box-group">
       <box v-for="product in products" :key="product.id" :product="product"></box>
@@ -10,8 +12,9 @@
 <script>
 import Box from '@/components/common/BoxView.vue'
 import { getProductions } from '@/servies/get'
+import AdvertiseView from './AdvertiseView.vue'
 export default {
-  components: { Box },
+  components: { Box, AdvertiseView },
   mounted() {
     this.fetchData()
   },
@@ -25,7 +28,6 @@ export default {
       console.log('fetchDAta')
       try {
         const response = await getProductions();
-        console.log("--->",response)
         this.products = response;
       } catch (err) {
         // error.value = 'Failed to fetch data';

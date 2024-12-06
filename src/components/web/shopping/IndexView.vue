@@ -5,20 +5,21 @@
         <img src="/LOGO.jpeg" alt="">
       </div>
       <search-box></search-box>
-      <div class="right">./ContentView.vue
+      <div class="right">
         <span>登入</span>
         <span>註冊</span>
       </div>
     </div>
-    <content-view></content-view>
+    <!-- <content-view></content-view> -->
+     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import SearchBox from '@/components/common/SearchBox.vue'
-import ContentView from './ContentView.vue'
+// import ContentView from './ContentView.vue'
 export default {
-  components: { ContentView, SearchBox },
+  components: { SearchBox },
   data() {
     return {
     }

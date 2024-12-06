@@ -1,5 +1,5 @@
 <template>
-  <div class="box-view">
+  <div class="box-view" @click="goto">
     <div class="inner-box">
       <div class="pic">
         <img :src="getImagePath(product.img_name)" alt="">
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { getImagePath } from '@/utils/image';
 export default {
   name: 'BoxView',
   props: ['product'],
@@ -20,7 +21,12 @@ export default {
   },
   methods: {
     getImagePath(img_name) {
-      return new URL(`/src/assets/imqges/${img_name}`, import.meta.url).href;
+      return getImagePath(img_name, 'images')
+    },
+    goto() {
+      console.log("goto")
+      console.log(this.$route)
+      this.$router.push(`/shopping/product/${this.product.id}`)
     }
   }
 }
