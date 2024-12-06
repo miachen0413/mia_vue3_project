@@ -2,7 +2,7 @@
   <div id="shopping-content">
     Shopping content
     <div class="box-group">
-      <box v-for="production in productions" :key="production.id" :production="production"></box>
+      <box v-for="product in products" :key="product.id" :product="product"></box>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      productions: {}
+      products: {}
     }
   },
   methods: {
@@ -25,8 +25,8 @@ export default {
       console.log('fetchDAta')
       try {
         const response = await getProductions();
-        console.log(response)
-        this.productions = response;
+        console.log("--->",response)
+        this.products = response;
       } catch (err) {
         // error.value = 'Failed to fetch data';
         console.error(err);

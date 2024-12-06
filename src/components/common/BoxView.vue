@@ -2,10 +2,10 @@
   <div class="box-view">
     <div class="inner-box">
       <div class="pic">
-        <img :src="`/imqges/${production.name}.jpg`" alt="">
+        <img :src="getImagePath(product.img_name)" alt="">
       </div>
-      <p>{{ production.name }}</p>
-      <p>{{ production.price }} 元</p>
+      <p>{{ product.name }}</p>
+      <p>{{ product.price }} 元</p>
     </div>
   </div>
 </template>
@@ -13,11 +13,16 @@
 <script>
 export default {
   name: 'BoxView',
-  props: ['production'],
+  props: ['product'],
   data() {
     return {
     }
   },
+  methods: {
+    getImagePath(img_name) {
+      return new URL(`/src/assets/imqges/${img_name}`, import.meta.url).href;
+    }
+  }
 }
 
 </script>
