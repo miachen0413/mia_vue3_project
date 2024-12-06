@@ -1,5 +1,5 @@
 <template>
-  <div class="shopping-content">
+  <div id="shopping-content">
     Shopping content
     <div class="box-group">
       <box v-for="production in productions" :key="production.id" :production="production"></box>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Box from './BoxView.vue'
+import Box from '@/components/common/BoxView.vue'
 import { getProductions } from '@/servies/get'
 export default {
   components: { Box },
@@ -40,4 +40,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+#shopping-content
+  padding: 15px
+  height: calc(100vh - 120px - 5rem - 4px)
+  overflow: auto
 </style>
