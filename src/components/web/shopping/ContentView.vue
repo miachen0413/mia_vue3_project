@@ -27,8 +27,8 @@ export default {
     async fetchData() {
       console.log('fetchDAta')
       try {
-        const response = await getProductions();
-        this.products = response;
+        const response = await getProductions(1);
+        this.products = response.data;
       } catch (err) {
         // error.value = 'Failed to fetch data';
         console.error(err);

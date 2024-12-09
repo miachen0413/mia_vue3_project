@@ -39,7 +39,7 @@ export default {
     async fetchData() {
       try {
         const res = await getAdvertises()
-        this.advertises = res
+        this.advertises = res.data
       }
       catch (err) {
         console.error(err);
