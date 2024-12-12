@@ -13,7 +13,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://my-vercel-api-one.vercel.app/api/',
+        // target: 'https://my-vercel-api-one.vercel.app/api',
+        // target: 'http://localhost:3000/api',
+        target: 'https://my-api-neon.vercel.app//api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

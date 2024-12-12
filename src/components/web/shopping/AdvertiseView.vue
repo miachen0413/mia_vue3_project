@@ -67,12 +67,12 @@ export default {
 <style lang="sass" scoped>
 #advertise
   @media (min-width: 834px) 
-  width: 75vw
+    width: 75vw
   @media (min-width: 1024px)
     width: 84vw
-  height: 250px
-  overflow: hidden
-  position: relative
+    height: 250px
+    overflow: hidden
+    position: relative
   .inner
     height: 100%
     display: flex

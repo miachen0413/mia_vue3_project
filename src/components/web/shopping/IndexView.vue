@@ -1,5 +1,6 @@
 <template>
   <div id="shopping">
+    <button @click="fetchProducts">Add product</button>
     <div class="shopping-head">
       <div class="logo">
         <img src="/LOGO.jpeg" alt="">
@@ -11,19 +12,26 @@
       </div>
     </div>
     <!-- <content-view></content-view> -->
-     <router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import SearchBox from '@/components/common/SearchBox.vue'
 // import ContentView from './ContentView.vue'
+import { addAdvertisess } from '@/servies/post';
+import db from './db.json'
 export default {
   components: { SearchBox },
   data() {
     return {
     }
   },
+  methods: {
+    fetchProducts() {
+      addAdvertisess(db.advertises)
+    }
+  }
 }
 
 </script>
