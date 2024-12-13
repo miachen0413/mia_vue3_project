@@ -11,7 +11,7 @@
 
 <script>
 import Box from '@/components/common/BoxView.vue'
-import { getProductions } from '@/servies/get'
+import { getAllProducts } from '@/servies/get'
 import AdvertiseView from './AdvertiseView.vue'
 export default {
   components: { Box, AdvertiseView },
@@ -27,7 +27,7 @@ export default {
     async fetchData() {
       console.log('fetchDAta')
       try {
-        const response = await getProductions(1);
+        const response = await getAllProducts(1);
         this.products = response.data;
       } catch (err) {
         // error.value = 'Failed to fetch data';

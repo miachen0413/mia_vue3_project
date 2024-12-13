@@ -12,6 +12,7 @@ export default {
   },
   mutations: {
     setShoppingCart(state, value) {
+      console.log("->", "setShoppingCart")
       state.shopping_cart = value;
     },
     addShippingCart(state, value) {
@@ -19,12 +20,16 @@ export default {
     }
   },
   actions: {
-    async getShoppingCart({
+    async fetchShoppingCart({
       commit
     }) {
+      console.log("action")
       try {
         const res = await getShoppingCart();
-        commit.setShoppingCart = res.data;
+        console.log("action-->", res)
+        console.log(commit)
+        commit('setShoppingCart', res.data);
+        console.log("AAA")
       } catch (err) {
         console.log("getShoppingCart->", err)
       }
