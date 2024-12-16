@@ -21,7 +21,7 @@
 <script>
 import { getImagePath } from '@/utils/image';
 import { getProducts } from '@/servies/get';
-import { addShoppingCart } from '@/servies/post';
+// import { addShoppingCart } from '@/servies/post';
 export default {
   mounted() {
     console.log(this.$route.params.id);
@@ -45,15 +45,16 @@ export default {
     getImagePath(img_name) {
       return getImagePath(img_name, 'images')
     },
-    addShoppingCart() {
+    async addShoppingCart() {
       const data = [{
         product_id: this.product.id,
         product_name: this.product.name,
-        produc_price: this.product.price,
+        product_price: this.product.price,
         product_count: 1,
         product_img_name: this.product.img_name
       }]
-      addShoppingCart(data);
+      // await addShoppingCart(data);
+      this.$store.dispatch('shopping/postShoppingCart', data)
     }
   }
 }

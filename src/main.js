@@ -5,8 +5,10 @@ import {
 import App from './App.vue'
 import router from './route'
 import store from './store'
+import Paginate from "vuejs-paginate-next";
 
-createApp(App)
-  .use(router)
-  .use(store)
-  .mount('#app')
+var app = createApp(App)
+app.use(router)
+app.use(store)
+app.component("paginate-item", Paginate)
+app.mount('#app')

@@ -4,6 +4,9 @@ import {
 import {
   addShoppingCart
 } from "@/servies/post";
+import {
+  deleteShoppingCart
+} from '@/servies/delete'
 
 export default {
   namespaced: true,
@@ -12,7 +15,6 @@ export default {
   },
   mutations: {
     setShoppingCart(state, value) {
-      console.log("->", "setShoppingCart")
       state.shopping_cart = value;
     },
     addShippingCart(state, value) {
@@ -23,11 +25,8 @@ export default {
     async fetchShoppingCart({
       commit
     }) {
-      console.log("action")
       try {
         const res = await getShoppingCart();
-        console.log("action-->", res)
-        console.log(commit)
         commit('setShoppingCart', res.data);
         console.log("AAA")
       } catch (err) {
@@ -35,13 +34,23 @@ export default {
       }
     },
     async postShoppingCart({
-      commit
+      dispatch
     }, value) {
       try {
-        const res = await addShoppingCart(value);
-        commit.addShippingCart = res.data;
+        await addShoppingCart(value);
+        await dispatch('fetchShoppingCart')
       } catch (err) {
         console.log("postShoppingCart->", err)
+      }
+    },
+    async deleteShoppingCart({
+      dispatch
+    }, value) {
+      try {
+        await deleteShoppingCart(value);
+        await dispatch('fetchShoppingCart')
+      } catch (err) {
+        console.log("deleteShoppingCart->", err)
       }
     },
   },

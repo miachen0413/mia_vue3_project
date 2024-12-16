@@ -163,14 +163,14 @@ url("./fonts/icofont.woff") format("woff");
   content: "\ef5d";
 }
 
-.icofont-cart:before
-{
-  content: "\eed2";
-}
-
 .icofont-bin:before
 {
   content: "\eebb";
+}
+
+.icofont-cart:before
+{
+  content: "\eed2";
 }
 
 [class^="icofont-"].icofont-duotone,

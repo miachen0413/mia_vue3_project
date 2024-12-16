@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     clickCallback(page_num) {
+      console.log("--->", page_num)
       this.$emit("updatePage", page_num)
     }
   }
