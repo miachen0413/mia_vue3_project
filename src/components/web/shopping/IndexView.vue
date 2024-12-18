@@ -1,30 +1,46 @@
 <template>
   <div id="shopping">
-    <div class="shopping-head">
-      <div class="logo">
-        <img src="/LOGO.jpeg" alt="">
-      </div>
-      <search-box></search-box>
-      <div class="right">
-        <span class="shopping-cart" @click="setIsShowShoppingCart">
-          <span class="cart-count"> {{ shopping_cart_count }}</span>
-          <i class="icofont-cart"></i>
-        </span>
-        <span>登入</span>
-        <span>註冊</span>
-      </div>
-    </div>
+    <el-page-header class="shopping-head" @back="onBack">
+      <template #content>
+        <div class="shopping-head-main">
+          <el-avatar :size="60">
+            <img src="/LOGO.jpeg" alt="">
+          </el-avatar>
+          <!-- <div class="logo">
+            <img src="/LOGO.jpeg" alt="">
+          </div> -->
+        </div>
+      </template>
+      <template #extra>
+        <div class="shopping-head-main">
+          <search-box></search-box>
+          <el-badge :value="shopping_cart_count" :offset="[-35, -8]">
+            <el-button @click="is_show_shopping_cart = true" style="font-size: 1.4rem;margin: -2px 8px 0px;"
+              :icon="ShoppingCart" link></el-button>
+          </el-badge>
+          <el-button key="登入" link>登入</el-button>
+          <el-button key="註冊" link>註冊</el-button>
+        </div>
+      </template>
+    </el-page-header>
+    <el-container>
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+      <shopping-cart-view v-model:is_show="is_show_shopping_cart"></shopping-cart-view>
+      <loading-view></loading-view>
+    </el-container>
     <!-- <content-view></content-view> -->
-    <shopping-cart v-show="is_show_shopping_cart"></shopping-cart>
-    <router-view></router-view>
   </div>
 </template>
-
+<script setup>
+import { ShoppingCart } from '@element-plus/icons-vue'
+</script>
 <script>
 import SearchBox from '@/components/common/SearchBox.vue'
-import ShoppingCart from './ShoppingCart.vue';
+import ShoppingCartView from './ShoppingCartView.vue';
 export default {
-  components: { SearchBox, ShoppingCart },
+  components: { SearchBox, ShoppingCartView },
   mounted() {
     console.log("fetchShoppingCart")
     this.$store.dispatch('shopping/fetchShoppingCart');
@@ -42,6 +58,9 @@ export default {
   methods: {
     setIsShowShoppingCart() {
       this.is_show_shopping_cart = !this.is_show_shopping_cart;
+    },
+    onBack() {
+      this.$router.go(-1);
     }
   }
 }
@@ -54,35 +73,9 @@ export default {
   border: 2px solid
   height: calc(100vh - 120px)
 .shopping-head
-  background-color: pink
-  display: flex
-  justify-content: space-between
-  align-items: center
-  height: 5rem
-  .logo
-    flex: 1
-    margin-left: .5rem
-    img
-      width: 4rem
-      height: 4rem
-      border-radius: 50%
-      overflow: hidden
-  .right
-    span
-      margin: 0 .5rem
-  .shopping-cart
-    font-size: 1.6rem
-    position: relative
-    .cart-count
-      position: absolute
-      top: -.5rem
-      right: -.8rem
-      font-size: .9rem
-      text-align: center
-      width: 1.1rem
-      height: 1.1rem
-      line-height: 1.1rem
-      border-radius: 50%
-      background-color: red
-      color: white
+  background-color: rgb(216.8, 235.6, 255)
+  padding: 10px
+  .shopping-head-main
+    display: flex
+    align-items: center
 </style>

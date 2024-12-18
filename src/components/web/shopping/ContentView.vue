@@ -1,13 +1,15 @@
 <template>
-  <div id="shopping-content">
-    advertise
-    <advertise-view></advertise-view>
-    Shopping content
-    <div class="box-group">
-      <box v-for="product in products" :key="product.id" :product="product"></box>
-    </div>
-    <pagination-item :page="pages.page" :page_count="pages.page_count" :limit="pages.limit"
-      @updatePage="updatePage"></pagination-item>
+  <div>
+    <el-scrollbar height="calc(100vh - 200px - 5rem - 4px)">
+      <advertise-view></advertise-view>
+      <div class="box-group">
+        <box v-for="product in products" :key="product.id" :product="product"></box>
+      </div>
+      <!-- <pagination-item :page="pages.page" :page_count="pages.page_count" :limit="pages.limit"
+        @updatePage="updatePage"></pagination-item> -->
+    </el-scrollbar>
+    <el-pagination class="pagination" :page-count="pages.page_count" v-model:current-page="pages.page"
+      @current-change="handleCurrentChange" background layout="prev, pager, next"></el-pagination>
   </div>
 </template>
 
@@ -15,9 +17,9 @@
 import Box from '@/components/common/BoxView.vue'
 import { getAllProducts } from '@/servies/get'
 import AdvertiseView from './AdvertiseView.vue'
-import PaginationItem from '@/components/common/PaginationItem.vue'
+// import PaginationItem from '@/components/common/PaginationItem.vue'
 export default {
-  components: { Box, AdvertiseView, PaginationItem },
+  components: { Box, AdvertiseView },
   mounted() {
     this.fetchData()
   },
@@ -33,7 +35,6 @@ export default {
   },
   methods: {
     async fetchData() {
-      console.log('fetchDAta')
       try {
         const response = await getAllProducts(this.pages.page);
         this.products = response.data;
@@ -47,7 +48,7 @@ export default {
         // loading.value = false;
       }
     },
-    updatePage(page) {
+    handleCurrentChange(page) {
       this.pages.page = page;
       this.fetchData();
 

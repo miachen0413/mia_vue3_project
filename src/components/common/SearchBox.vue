@@ -1,14 +1,20 @@
 <template>
   <div id="search-box">
-    <input type="text">
-    <button type="button">搜尋</button>
+    <el-input v-model="input_value" placeholder="Search" :prefix-icon="Search" />
   </div>
 </template>
+<script setup>
+import { Search } from '@element-plus/icons-vue';
+</script>
 <script>
 export default {
-  
+  data() {
+    return {
+      input_value: ""
+    }
+  },
 }
 </script>
 <style lang="sass" scoped>
-  
+
 </style>

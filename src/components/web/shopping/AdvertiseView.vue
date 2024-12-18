@@ -1,16 +1,10 @@
 <template>
   <div id="advertise" ref="advertise">
-    <div class="inner" :style="{ width: `calc(100% * ${advertises.length})`, marginLeft: inner_margin_left }">
-      <div v-for="(advertise, index) in advertises" :key="index" :class="'box' + index"
-        :style="{ width: advertise_width }">
-        <img :src="getImagePath(advertise.img)" alt="" :max-width="advertise_width">
-        <!-- {{ advertise }} -->
-      </div>
-    </div>
-    <div class="spot-box">
-      <div class="spot" v-for="item in advertises.length" :key="item" @click="setScrollIdx(item)"
-        :class="{ 'light': this.scroll_idx === item }"></div>
-    </div>
+    <el-carousel :height="`${height}px`">
+      <el-carousel-item v-for="(advertise, index) in advertises" :key="index">
+        <img :src="getImagePath(advertise.img)" alt="" :style="{maxHeight : `${height}px`}">
+      </el-carousel-item>
+    </el-carousel>
   </div>
 </template>
 <script>
@@ -20,19 +14,11 @@ export default {
   mounted() {
     this.fetchData();
     this.getIdAdvertiseWidth();
-    console.log(this.$refs['advertise'].offsetWidth)
-    this.setScrollAnimation()
   },
   data() {
     return {
       advertises: [],
-      scroll_idx: 1,
-      advertise_width: '100%'
-    }
-  },
-  computed: {
-    inner_margin_left() {
-      return (this.scroll_idx - 1) * -100 + '%'
+      height: 250
     }
   },
   methods: {
@@ -48,33 +34,31 @@ export default {
     getImagePath(img_name) {
       return getImagePath(img_name, 'advertise')
     },
-    setScrollIdx(idx) {
-      this.scroll_idx = idx;
-      this.scroll_idx < this.advertises.length && this.setScrollAnimation();
-    },
     getIdAdvertiseWidth() {
-      this.advertise_width = this.$refs['advertise'].offsetWidth + 'px';
-    },
-    setScrollAnimation() {
-      let timer = setInterval(() => {
-        if (this.scroll_idx >= this.advertises.length) clearInterval(timer);
-        else this.scroll_idx++
-      }, 1000)
+      const advertise_width = this.$refs['advertise'].offsetWidth;
+      console.log(advertise_width)
+      if (advertise_width > 834) this.height = 350
     }
   }
 }
 </script>
 <style lang="sass" scoped>
 #advertise
-  @media (min-width: 834px) 
+  @media (min-width: 768px) 
     width: 75vw
-  @media (min-width: 1024px)
+  @media (min-width: 992px)
     width: 84vw
-    height: 250px
+    // height: 350px
     overflow: hidden
     position: relative
+  img
+    position: relative
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
   .inner
     height: 100%
+    width: 100%
     display: flex
     transition: .5s
   .spot-box
@@ -99,9 +83,4 @@ export default {
         box-shadow: 0px 0px 4px #ffffff
   [class ^= 'box']
     text-align: center
-    img
-      position: relative
-      top: 50%
-      transform: translate(0, -50%)
-      max-height: 250px
 </style>
