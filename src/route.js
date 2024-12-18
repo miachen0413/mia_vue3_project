@@ -9,6 +9,7 @@ import SnakeView from './components/game/SnakeView.vue'
 import Shopping from './components/web/shopping/IndexView.vue'
 import ProductView from './components/web/shopping/ProductView.vue'
 import ContentView from './components/web/shopping/ContentView.vue'
+import FlopCards from './components/game/FlopCards.vue'
 
 const routes = [{
     path: '/',
@@ -19,22 +20,25 @@ const routes = [{
     component: LadderView
   },
   {
+    path: '/flap_cards',
+    component: FlopCards
+  },
+  {
     path: '/snake',
     component: SnakeView
   },
   {
     path: '/shopping',
     component: Shopping,
-    children: [
+    children: [{
+        path: '',
+        component: ContentView
+      },
       {
-      path: '',
-      component: ContentView
-    },
-      {
-      path: 'product/:id',
-      component: ProductView
-    }
-  ]
+        path: 'product/:id',
+        component: ProductView
+      }
+    ]
   },
 ]
 

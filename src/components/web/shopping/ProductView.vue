@@ -19,10 +19,10 @@
     </el-scrollbar>
     <el-affix position="bottom" :offset="40">
       <el-row>
-        <el-col :span="3" :offset="9">
+        <el-col :md="{ span: 3, offset: 9 }" :xs="{ span: 6, offset: 6 }" :sm="{ span: 6, offset: 6 }">
           <el-button type="primary"> 馬上購買</el-button>
         </el-col>
-        <el-col :span="3">
+        <el-col :md="{ span: 3 }" :xs="{ span: 6 }" :sm="{ span: 6 }">
           <el-button type="primary" @click="addShoppingCart"> 添加購物車</el-button>
         </el-col>
       </el-row>
