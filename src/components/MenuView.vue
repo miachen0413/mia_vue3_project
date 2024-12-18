@@ -22,8 +22,8 @@ export default {
           title: '遊戲', path: '',
           children: [
             { title: '貪食蛇', path: '/snake', children: [], },
-            { title: '梯子遊戲', path: '/ladder', children: [], },
-            { title: '翻牌遊戲', path: '/ladder', children: [], },
+            // { title: '梯子遊戲', path: '/ladder', children: [], },
+            // { title: '翻牌遊戲', path: '/ladder', children: [], },
           ]
         },
         {
