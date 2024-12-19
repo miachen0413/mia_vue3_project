@@ -4,6 +4,7 @@ import {
   createRouter
 } from 'vue-router'
 import HomeView from './components/HomeView.vue'
+import Login from './components/web/LoginView.vue'
 import LadderView from './components/game/LadderView.vue'
 import SnakeView from './components/game/SnakeView.vue'
 import Shopping from './components/web/shopping/IndexView.vue'
@@ -26,6 +27,10 @@ const routes = [{
   {
     path: '/snake',
     component: SnakeView
+  },
+  {
+    path: '/login',
+    component: Login
   },
   {
     path: '/shopping',

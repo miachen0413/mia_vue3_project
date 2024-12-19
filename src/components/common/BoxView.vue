@@ -31,7 +31,6 @@ export default {
       this.$router.push(`/shopping/product/${this.product.id}`)
     },
     getBoxViewWidth() {
-      console.log(this.$refs['BoxView'].clientWidth, this.$refs['BoxView'].offsetWidth)
       this.box_view_width = parseInt(this.$refs['BoxView'].clientWidth - 20) + 'px'
     }
   }

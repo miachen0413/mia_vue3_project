@@ -18,8 +18,9 @@
             <el-button @click="is_show_shopping_cart = true" style="font-size: 1.4rem;margin: -2px 8px 0px;"
               :icon="ShoppingCart" link></el-button>
           </el-badge>
-          <el-button key="登入" link>登入</el-button>
-          <el-button key="註冊" link>註冊</el-button>
+          <el-button v-if="!is_login" key="登入" @click="goTo('/login')" link>登入</el-button>
+          <el-button v-else key="登出" @click="logout" link>登出</el-button>
+          <!-- <el-button key="註冊" link>註冊</el-button> -->
         </div>
       </template>
     </el-page-header>
@@ -39,11 +40,16 @@ import { ShoppingCart } from '@element-plus/icons-vue'
 <script>
 import SearchBox from '@/components/common/SearchBox.vue'
 import ShoppingCartView from './ShoppingCartView.vue';
+import { Logout } from '@/servies/post';
+import { ElMessage } from 'element-plus';
+import {
+  getCookie
+} from '@/utils/common.js'
 export default {
   components: { SearchBox, ShoppingCartView },
   mounted() {
-    console.log("fetchShoppingCart")
     this.$store.dispatch('shopping/fetchShoppingCart');
+    this.setIsLogin()
   },
   data() {
     return {
@@ -53,14 +59,39 @@ export default {
   computed: {
     shopping_cart_count() {
       return this.$store.state.shopping.shopping_cart.length;
+    },
+    is_login() {
+      return this.$store.state.is_login
     }
   },
   methods: {
     setIsShowShoppingCart() {
       this.is_show_shopping_cart = !this.is_show_shopping_cart;
     },
+    goTo(url) {
+      this.$router.push(url)
+    },
     onBack() {
       this.$router.go(-1);
+    },
+    logout() {
+      Logout().then(res => {
+        ElMessage({
+          message: res.message,
+          type: 'success'
+        })
+        document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+        this.setIsLogin()
+        this.$router.push('/shopping')
+      })
+    },
+    setIsLogin() {
+      const token = getCookie('token')
+      if (token === null) {
+        this.$store.commit("setIsLogin", false)
+      } else {
+        this.$store.commit("setIsLogin", true)
+      }
     }
   }
 }

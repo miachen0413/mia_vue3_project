@@ -54,7 +54,6 @@ import { ElMessage } from 'element-plus';
 // import { addShoppingCart } from '@/servies/post';
 export default {
   mounted() {
-    console.log(this.$route.params.id);
     this.fetchProduct(this.$route.params.id)
   },
   data() {
@@ -67,7 +66,6 @@ export default {
     async fetchProduct(id) {
       try {
         const result = await getProducts(id)
-        console.log("-->", result)
         this.product = result.data[0];
       } catch (err) {
         console.log(err)

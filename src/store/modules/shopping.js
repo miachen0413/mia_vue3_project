@@ -28,7 +28,6 @@ export default {
       try {
         const res = await getShoppingCart();
         commit('setShoppingCart', res.data);
-        console.log("AAA")
       } catch (err) {
         console.log("getShoppingCart->", err)
       }

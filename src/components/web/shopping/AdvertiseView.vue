@@ -36,7 +36,6 @@ export default {
     },
     getIdAdvertiseWidth() {
       const advertise_width = this.$refs['advertise'].offsetWidth;
-      console.log(advertise_width)
       if (advertise_width > 834) this.height = 350
     }
   }
