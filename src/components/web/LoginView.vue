@@ -34,8 +34,9 @@ export default {
         user_name: this.user_name,
         password: MD5(this.password)
       }).then(res => {
-        const token = res.token
+        const { token} = res
         document.cookie = `token=${token}; path=/; max-age=3600; secure; SameSite=Strict`;
+        document.cookie = `user_name=${this.user_name}; path=/; max-age=3600; secure; SameSite=Strict`;
         this.$store.commit("setIsLogin", true)
         ElMessage({
           message: res.message,

@@ -51,6 +51,7 @@
 import { getImagePath } from '@/utils/image';
 import { getProducts } from '@/servies/get';
 import { ElMessage } from 'element-plus';
+import { getCookie } from '@/utils/common';
 // import { addShoppingCart } from '@/servies/post';
 export default {
   mounted() {
@@ -79,12 +80,11 @@ export default {
         message: '請確認數量，目前數量為' + this.count,
         type: 'warning'
       })
+      const user_id = getCookie("user_name") || 1
       const data = [{
+        user_id,
         product_id: this.product.id,
-        product_name: this.product.name,
-        product_price: this.product.price,
-        product_count: this.count,
-        product_img_name: this.product.img_name
+        count: this.count,
       }]
       this.$store.dispatch('shopping/postShoppingCart', data)
     }

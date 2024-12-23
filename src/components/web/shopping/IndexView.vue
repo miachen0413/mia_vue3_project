@@ -81,8 +81,10 @@ export default {
           type: 'success'
         })
         document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+        document.cookie = `user_name=undefined; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
         this.setIsLogin()
         this.$router.push('/shopping')
+        this.$router.go(0);
       })
     },
     setIsLogin() {

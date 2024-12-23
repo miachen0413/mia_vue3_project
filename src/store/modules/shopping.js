@@ -7,6 +7,9 @@ import {
 import {
   deleteShoppingCart
 } from '@/servies/delete'
+import {
+  getCookie
+} from '@/utils/common.js'
 
 export default {
   namespaced: true,
@@ -26,7 +29,9 @@ export default {
       commit
     }) {
       try {
-        const res = await getShoppingCart();
+        getCookie
+        const id = getCookie('user_name') || 1;
+        const res = await getShoppingCart(id);
         commit('setShoppingCart', res.data);
       } catch (err) {
         console.log("getShoppingCart->", err)
