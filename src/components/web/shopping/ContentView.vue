@@ -18,7 +18,6 @@ import Box from '@/components/common/BoxView.vue'
 import { getAllProducts } from '@/servies/get'
 import AdvertiseView from './AdvertiseView.vue'
 import { sleep } from '@/utils/common';
-import { searchProduct } from '@/servies/get';
 export default {
   components: { Box, AdvertiseView },
   mounted() {
