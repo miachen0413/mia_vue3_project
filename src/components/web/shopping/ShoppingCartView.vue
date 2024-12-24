@@ -82,7 +82,8 @@ export default {
     },
     async deleteShoppingCart(data) {
       const res = JSON.parse(JSON.stringify(data));
-      this.$store.dispatch("shopping/deleteShoppingCart", { id: res.id })
+      console.log("res->", res)
+      this.$store.dispatch("shopping/deleteShoppingCart", res.product_id)
     }
   }
 }

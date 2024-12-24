@@ -10,13 +10,20 @@ import {
 import {
   getCookie
 } from '@/utils/common.js'
+import {
+  ElMessage
+} from 'element-plus';
 
 export default {
   namespaced: true,
   state: {
     shopping_cart: [],
+    search: '',
   },
   mutations: {
+    setSearch(state, value) {
+      state.search = value;
+    },
     setShoppingCart(state, value) {
       state.shopping_cart = value;
     },
@@ -29,32 +36,48 @@ export default {
       commit
     }) {
       try {
-        getCookie
         const id = getCookie('user_name') || 1;
         const res = await getShoppingCart(id);
         commit('setShoppingCart', res.data);
       } catch (err) {
-        console.log("getShoppingCart->", err)
+        ElMessage({
+          message: err.data.error,
+          type: 'error'
+        })
       }
     },
     async postShoppingCart({
       dispatch
     }, value) {
       try {
-        await addShoppingCart(value);
+        const res = await addShoppingCart(value);
+        ElMessage({
+          message: res.message,
+          type: 'sucess'
+        })
         await dispatch('fetchShoppingCart')
       } catch (err) {
-        console.log("postShoppingCart->", err)
+        ElMessage({
+          message: err.data.error,
+          type: 'error'
+        })
       }
     },
     async deleteShoppingCart({
       dispatch
     }, value) {
       try {
-        await deleteShoppingCart(value);
+        const user_id = getCookie('user_name') || 1;
+        await deleteShoppingCart({
+          product_id: value,
+          user_id
+        });
         await dispatch('fetchShoppingCart')
       } catch (err) {
-        console.log("deleteShoppingCart->", err)
+        ElMessage({
+          message: err.data.error,
+          type: 'error'
+        })
       }
     },
   },

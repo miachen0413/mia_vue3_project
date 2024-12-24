@@ -6,3 +6,5 @@ export const getCookie = function (name) {
   }
   return null;
 }
+
+export const sleep = ms => new Promise(r => setTimeout(r, ms));

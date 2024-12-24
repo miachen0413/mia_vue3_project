@@ -76,10 +76,13 @@ export default {
       return getImagePath(img_name, 'images')
     },
     async addShoppingCart() {
-      if (this.count === 0) ElMessage({
-        message: '請確認數量，目前數量為' + this.count,
-        type: 'warning'
-      })
+      if (this.count === 0) {
+        ElMessage({
+          message: '請確認數量，目前數量為' + this.count,
+          type: 'warning'
+        })
+        return;
+      }
       const user_id = getCookie("user_name") || 1
       const data = [{
         user_id,

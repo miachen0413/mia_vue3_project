@@ -17,7 +17,8 @@
 import Box from '@/components/common/BoxView.vue'
 import { getAllProducts } from '@/servies/get'
 import AdvertiseView from './AdvertiseView.vue'
-// import PaginationItem from '@/components/common/PaginationItem.vue'
+import { sleep } from '@/utils/common';
+import { searchProduct } from '@/servies/get';
 export default {
   components: { Box, AdvertiseView },
   mounted() {
@@ -30,13 +31,29 @@ export default {
         page: 1,
         page_count: -1,
         limit: 10
+      },
+      is_search: true
+    }
+  },
+  computed: {
+    search() {
+      return this.$store.state.shopping.search;
+    }
+  },
+  watch: {
+    async search() {
+      if (this.is_search) {
+        this.is_search = false
+        await this.fetchData()
       }
+      await sleep(200)
+      this.is_search = true;
     }
   },
   methods: {
     async fetchData() {
       try {
-        const response = await getAllProducts(this.pages.page);
+        const response = await getAllProducts(this.pages.page, this.search);
         this.products = response.data;
         this.pages.page_count = parseInt(response.page_count, 10)
         this.pages.limit = response.limit || 10;
