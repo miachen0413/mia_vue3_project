@@ -2,9 +2,8 @@
   <div id="resume">
     <!-- <iframe src="/public/Resume.pdf" frameborder="0" width="100%" height="100%"></iframe> -->
     <!-- <iframe src="/Resume.pdf" type=""> -->
-      <img src="/Resume_page-0001.jpg" alt="">
-      <img src="/Resume_page-0002.jpg" alt="">
-      <img src="/Resume_page-0003.jpg" alt="">
+      <img src="/Resume_1.jpg" alt="">
+      <img src="/Resume.jpg" alt="">
   </div>
 </template>
 

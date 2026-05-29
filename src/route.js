@@ -11,6 +11,7 @@ import Shopping from './components/web/shopping/IndexView.vue'
 import ProductView from './components/web/shopping/ProductView.vue'
 import ContentView from './components/web/shopping/ContentView.vue'
 import FlopCards from './components/game/FlopCards.vue'
+import Interview from './components/interview/indexView.vue'
 
 const routes = [{
     path: '/',
@@ -31,6 +32,10 @@ const routes = [{
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/interview',
+    component: Interview
   },
   {
     path: '/shopping',
