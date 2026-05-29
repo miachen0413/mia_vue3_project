@@ -1,23 +1,16 @@
 <template>
   <div class="common-layout">
-    <el-container>
-      <header-box v-model:isLeftShow="is_left_show"></header-box>
-    </el-container>
-    <el-container class="content-box">
-      <menu-view :is_left_show="is_left_show"></menu-view>
-      <el-main id="right-list">
-        <RouterView></RouterView>
-      </el-main>
-    </el-container>
-    <div class="overlay" v-show="is_left_show" @click="setLeftShow(false)"></div>
+    <header-box v-model:isLeftShow="is_left_show"></header-box>
+    <RouterView></RouterView>
+    <FooterBox></FooterBox>
   </div>
 </template>
 
 <script>
 import HeaderBox from './components/HeaderView.vue'
-import MenuView from './components/MenuView.vue'
+import FooterBox from './components/FooterView.vue'
 export default {
-  components: { HeaderBox, MenuView },
+  components: { HeaderBox, FooterBox },
   data() {
     return {
       is_left_show: false
@@ -33,4 +26,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.el-main
+  padding: 0
 </style>
