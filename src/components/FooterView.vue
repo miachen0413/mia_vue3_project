@@ -13,22 +13,22 @@ const icons = [
   {
     alt: 'LinkedIn',
     href: 'https://www.linkedin.com/in/%E7%BE%8E%E9%9B%85-%E9%99%B3-773999175/',
-    src: '/public/icon/linkdin.svg',
+    src: '/icon/linkdin.svg',
   },
   {
     alt: 'GitHub',
     href: 'https://github.com/miachen0413/mia_vue3_project',
-    src: '/public/icon/github.svg',
+    src: '/icon/github.svg',
   },
   {
     alt: 'Medium',
     href: 'https://medium.com/@spispil332',
-    src: '/public/icon/medium.svg',
+    src: '/icon/medium.svg',
   },
   {
     alt: 'Cake',
     href: 'https://www.cake.me/dashboard',
-    src: '/public/icon/cake.svg',
+    src: '/icon/cake.svg',
   },
 ]
 </script>
