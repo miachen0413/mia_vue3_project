@@ -18,6 +18,7 @@
         <p class="desc-heading">作品說明</p>
         <div class="desc-body">
           <p class="description">{{ description }}</p>
+          <slot name="description"></slot>
         </div>
       </div>
     </div>

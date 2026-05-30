@@ -5,10 +5,10 @@
       <div class="photo-wrap">
         <img class="photo" :src="photoUrl" alt="Mia" />
       </div>
-      <div class="pop">
+      <!-- <div class="pop">
         <div class="pop-bubble">很高興認識你！</div>
         <img class="pop-tail" :src="vectorUrl" alt="" />
-      </div>
+      </div> -->
     </div>
 
     <!-- Intro -->
@@ -85,7 +85,7 @@ const cards = [
     {text: 'HTML', alt: 'HTML', icon: htmlIcon},
     {text: 'SASS', alt: 'CSS', icon: cssIcon},
   ] },
-  { title: '翻牌記憶',   image: '/flap_cards.png', 
+  { title: '翻牌記憶',   image: '/cards.png', 
   path: '/flap_cards', 
   uses: [
     {text: 'VUE2', alt: 'Vue',icon: vueIcon2},
@@ -99,6 +99,9 @@ const cards = [
     {text: 'HTML', alt: 'HTML', icon: htmlIcon},
     {text: 'SASS', alt: 'CSS', icon: cssIcon},
   ] },
+  { title: '屈臣氏酒莊', image: '/shopping.png', 
+  path: '/watsonswine',
+  uses: [] },
 ]
 
 function goto(url) {
@@ -131,6 +134,8 @@ function goto(url) {
       .photo
         width: 100%
         height: 100%
+        border-radius: 160px
+        overflow: hidden
         object-fit: cover
         display: block
 
@@ -248,11 +253,12 @@ function goto(url) {
   .cards-row
     display: flex
     align-items: stretch
+    flex-wrap: wrap
     padding: 0 20px 20px
 
     .word-card
-      flex: 1 0 0
-      min-width: 0
+      flex: calc(100% / 4) 0 0
+      min-width: 320px
       overflow: hidden
       padding: 20px
       border-radius: 2px

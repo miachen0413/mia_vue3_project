@@ -12,6 +12,7 @@ import ProductView from './components/web/shopping/ProductView.vue'
 import ContentView from './components/web/shopping/ContentView.vue'
 import FlopCards from './components/game/FlopCards.vue'
 import Interview from './components/interview/indexView.vue'
+import WatsonsWineView from './components/watsonWine/indexView.vue'
 
 const routes = [{
     path: '/',
@@ -36,6 +37,10 @@ const routes = [{
   {
     path: '/interview',
     component: Interview
+  },
+  {
+    path: '/watsonsWine',
+    component: WatsonsWineView
   },
   {
     path: '/shopping',
